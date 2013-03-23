@@ -22,3 +22,4 @@ if __name__ == '__main__':
     for test in b:
         print test
         print a.process(test)
+        print
