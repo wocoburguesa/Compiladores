@@ -1,3 +1,4 @@
+from custom_exceptions import InvalidToken
 import constants
 
 class RegEx:
@@ -6,7 +7,7 @@ class RegEx:
     def __init__(self):
         pass
 
-    def process(self, string):
+    def process(self, string, line):
         if self.is_word(string):
             if string in self.reswords:
                 return constants.RESWORD
@@ -18,7 +19,7 @@ class RegEx:
             elif self.is_number(string):
                 return constants.NUMBER
             else:
-                return constants.NOT_WORD
+                raise InvalidToken(string, line)
 
     def is_word(self, string):
         if not (string[0].isalpha() or
