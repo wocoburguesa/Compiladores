@@ -9,14 +9,16 @@ class RegEx:
     def process(self, string):
         if self.is_word(string):
             if string in self.reswords:
-                return string
+                return constants.RESWORD
             else:
                 return constants.VARIABLE
         else:
             if self.is_symbol(string):
-                return string
+                return constants.SYMBOLS[string]
             elif self.is_number(string):
                 return constants.NUMBER
+            else:
+                return constants.NOT_WORD
 
     def is_word(self, string):
         if not (string[0].isalpha() or
@@ -31,6 +33,9 @@ class RegEx:
         return True
         
     def is_number(self, string):
+        """
+        ([0...9]+ (.[0...9]+)? )*
+        """
         if not string.isdigit():
             parts = string.split('.')
             if not len(parts) == 2:
@@ -41,7 +46,7 @@ class RegEx:
             else:
                 return False
         else:
-            return False
+            return True
         
     def is_symbol(self, string):
         if string in constants.SYMBOLS:

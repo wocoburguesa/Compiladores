@@ -2,24 +2,14 @@ from regex import RegEx
 
 if __name__ == '__main__':
     a = RegEx()
-    b = [
-        'hola',
-        '_hola',
-        'hol7a',
-        '_ho89a',
-        '_938',
-        '8dj',
-        'for',
-        'while',
-        '*',
-        '}',
-        '34s',
-        '33.33',
-        '33.33s',
-        '33.33.',
-        '_33.33'
-        ]
+    program = open('example.js')
+    b = [word.strip() for word in program.readlines()]
+    program.close()
+
+    line_number = 1
     for test in b:
-        print test
-        print a.process(test)
-        print
+        print 'Line #%d: %s %s' % (line_number,
+                                   test,
+                                   a.process(test))
+        line_number += 1
+
