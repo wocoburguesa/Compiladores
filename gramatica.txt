@@ -1,0 +1,23 @@
+SUPERCHEVERE -> PROGRAM $
+PROGRAM -> { BODY }
+BODY -> ASSIGNMENT BODY_COMMA | FUN BODY_COMMA | IF BODY_COMMA | WHILE BODY_COMMA | FUNCALL BODY_COMMA
+BODY_COMMA -> , BODY | e
+ASSIGNMENT -> ASSIGNMENT_LEFT | ASSIGNMENT_RIGHT
+ASSIGNMENT_LEFT -> <var> :
+ASSIGNMENT_RIGHT -> <var> | <val> | { EXP } | FUNCALL
+EXP -> { EXP_IN }
+EXP_IN ->
++ : [ ARG_LIST ] | - : [ ARG_PAIR ] | * : [ ARG_LIST ] | / : [ ARG_PAIR ] | > : [ ARG_PAIR ] | < : [ ARG_PAIR ] | == : [ ARG_PAIR ] | >= : [ ARG_PAIR ] | <= : [ ARG_PAIR ] | and : [ ARG_PAIR ] | or : [ ARG_PAIR ] | not : VARVALEXP | FUNCALL
+FUNCALL -> <var> : [ ARG_LIST ]
+ARG_LIST -> <var> ARG_LIST_END | <val> ARG_LIST_END | EXP ARG_LIST_END
+ARG_LIST_END -> , ARG_LIST | e
+PARAM_LIST -> <var> PARAM_LIST_END
+PARAM_LIST_END -> , PARAM_LIST | e
+ARG_PAIR -> <var> ARG_PAIR_END | <val> ARG_PAIR_END | EXP ARG_PAIR_END
+ARG_PAIR_END -> , VARVALEXP
+VARVALEXP -> <var> | <val> | EXP
+FUN -> function <var> : { args : [ PARAM_LIST ] , BODY , return : R }
+R -> EXP | <var> | <val> | none
+IF -> if : { COND , then : S , else : S }
+COND -> VARVALEXP
+WHILE -> while : { COND , BODY }

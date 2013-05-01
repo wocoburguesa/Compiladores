@@ -1,0 +1,6 @@
+if __name__ == '__main__':
+    txt = open('gramatica.txt', 'r')
+    json = {}
+    target = open('grammar.js', 'w')
+
+    

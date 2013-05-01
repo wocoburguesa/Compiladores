@@ -1,0 +1,5 @@
+from exceptions import Exception
+
+class InvalidToken(BaseException):
+    def __init__(self, token):
+        self.message = 'Token %s is invalid' % token
