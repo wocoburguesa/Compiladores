@@ -2,7 +2,7 @@ from regex import RegEx
 from tokenizer import *
 from syntax import SyntaxAnalyzer
 
-def test_1():
+def test1():
     a = RegEx()
     program = open('example.js')
     b = [word.strip() for word in program.readlines()]
@@ -19,16 +19,19 @@ def test_1():
 
     output.close()
 
-def test_2():
+def test2():
     a = Tokenizer('example2.js')
     a.make_tokens()
     a.print_all()
 
-def test_3():
+def test3():
     a = SyntaxAnalyzer('example2.js')
     a.load_grammar('grammar.js')
     a.print_all()
     return a
 
-if __name__ == '__main__':
-    test_3()
+def test4():
+    a = SyntaxAnalyzer('example2.js')
+    a.load_grammar('grammar.js')
+    a.make_table()
+    return a

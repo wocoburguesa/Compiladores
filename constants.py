@@ -2,7 +2,7 @@ RESERVED_WORDS = [
     'while',
     'if',
     'then',
-    'else,'
+    'else',
     'args',
     'return',
     'and',
@@ -29,8 +29,11 @@ SYMBOLS = {
     '#': 'numeral',
     }
 
-VARIABLE = 'var'
-NUMBER = 'num'
+VARIABLE = '<var>'
+NUMBER = '<num>'
+
+TERMINALS = RESERVED_WORDS + SYMBOLS.keys() + [VARIABLE, NUMBER]
+
 SYMBOL = 'symbol'
 INVALID = 'invalid'
 INVALID_MESSAGE = '"%(word)s" Is not a valid token'

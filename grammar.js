@@ -1,7 +1,7 @@
 {
     "BODY": [
         [
-            "ASSIGNMENT", 
+            "ASSIGNMENT_FUNCALL", 
             "BODY_COMMA"
         ], 
         [
@@ -15,26 +15,6 @@
         [
             "WHILE", 
             "BODY_COMMA"
-        ], 
-        [
-            "FUNCALL", 
-            "BODY_COMMA"
-        ]
-    ], 
-    "ASSIGNMENT_RIGHT": [
-        [
-            "<var>"
-        ], 
-        [
-            "<val>"
-        ], 
-        [
-            "{", 
-            "EXP", 
-            "}"
-        ], 
-        [
-            "FUNCALL"
         ]
     ], 
     "ARG_LIST_END": [
@@ -61,116 +41,6 @@
             "PARAM_LIST_END"
         ]
     ], 
-    "ASSIGNMENT": [
-        [
-            "ASSIGNMENT_LEFT"
-        ], 
-        [
-            "ASSIGNMENT_RIGHT"
-        ]
-    ], 
-    "IF": [
-        [
-            "if", 
-            ":", 
-            "{", 
-            "COND", 
-            ",", 
-            "then", 
-            ":", 
-            "S", 
-            ",", 
-            "else", 
-            ":", 
-            "S", 
-            "}"
-        ]
-    ], 
-    "R": [
-        [
-            "EXP"
-        ], 
-        [
-            "<var>"
-        ], 
-        [
-            "<val>"
-        ], 
-        [
-            "none"
-        ]
-    ], 
-    "FUNCALL": [
-        [
-            "<var>", 
-            ":", 
-            "[", 
-            "ARG_LIST", 
-            "]"
-        ]
-    ], 
-    "SUPERCHEVERE": [
-        [
-            "PROGRAM", 
-            "$"
-        ]
-    ], 
-    "WHILE": [
-        [
-            "while", 
-            ":", 
-            "{", 
-            "COND", 
-            ",", 
-            "BODY", 
-            "}"
-        ]
-    ], 
-    "PROGRAM": [
-        [
-            "{", 
-            "BODY", 
-            "}"
-        ]
-    ], 
-    "ARG_PAIR_END": [
-        [
-            ",", 
-            "<var>"
-        ], 
-        [
-            ",", 
-            "<val>"
-        ], 
-        [
-            ",", 
-            "EXP"
-        ], 
-        [
-            "e"
-        ]
-    ], 
-    "ARG_PAIR": [
-        [
-            "<var>", 
-            "ARG_PAIR_END"
-        ], 
-        [
-            "<val>", 
-            "ARG_PAIR_END"
-        ], 
-        [
-            "EXP", 
-            "ARG_PAIR_END"
-        ]
-    ], 
-    "EXP": [
-        [
-            "{", 
-            "EXP_IN", 
-            "}"
-        ]
-    ], 
     "FUN": [
         [
             "function", 
@@ -191,7 +61,90 @@
             "}"
         ]
     ], 
-    "COND": [
+    "VARVALEXP": [
+        [
+            "<var>"
+        ], 
+        [
+            "<val>"
+        ], 
+        [
+            "EXP"
+        ]
+    ], 
+    "WHILE": [
+        [
+            "while", 
+            ":", 
+            "{", 
+            "COND", 
+            ",", 
+            "BODY", 
+            "}"
+        ]
+    ], 
+    "VAR_RIGHT": [
+        [
+            "<var>"
+        ], 
+        [
+            "<val>"
+        ], 
+        [
+            "EXP"
+        ], 
+        [
+            "[", 
+            "ARG_LIST", 
+            "]"
+        ]
+    ], 
+    "IF": [
+        [
+            "if", 
+            ":", 
+            "{", 
+            "COND", 
+            ",", 
+            "then", 
+            ":", 
+            "S", 
+            ",", 
+            "else", 
+            ":", 
+            "S", 
+            "}"
+        ]
+    ], 
+    "EXP_IN": [
+        [
+            "+", 
+            ":", 
+            "[", 
+            "ARG_LIST", 
+            "]"
+        ], 
+        [
+            "-", 
+            ":", 
+            "[", 
+            "ARG_PAIR", 
+            "]"
+        ], 
+        [
+            "*", 
+            ":", 
+            "[", 
+            "ARG_LIST", 
+            "]"
+        ], 
+        [
+            "/", 
+            ":", 
+            "[", 
+            "ARG_PAIR", 
+            "]"
+        ], 
         [
             ">", 
             ":", 
@@ -240,12 +193,88 @@
             "[", 
             "ARG_PAIR", 
             "]"
+        ], 
+        [
+            "not", 
+            ":", 
+            "VARVALEXP"
+        ], 
+        [
+            "ASSIGNMENT_FUNCALL"
         ]
     ], 
-    "ASSIGNMENT_LEFT": [
+    "ARG_PAIR_END": [
+        [
+            ",", 
+            "VARVALEXP"
+        ]
+    ], 
+    "VAR_LEFT": [
         [
             "<var>", 
             ":"
+        ]
+    ], 
+    "EXP": [
+        [
+            "{", 
+            "EXP_IN", 
+            "}"
+        ]
+    ], 
+    "ASSIGNMENT_FUNCALL": [
+        [
+            "VAR_LEFT", 
+            "VAR_RIGHT"
+        ]
+    ], 
+    "SC": [
+        [
+            "{", 
+            "BODY", 
+            "}"
+        ]
+    ], 
+    "COND": [
+        [
+            "VARVALEXP"
+        ]
+    ], 
+    "R": [
+        [
+            "EXP"
+        ], 
+        [
+            "<var>"
+        ], 
+        [
+            "<val>"
+        ], 
+        [
+            "none"
+        ]
+    ], 
+    "ARG_PAIR": [
+        [
+            "<var>", 
+            "ARG_PAIR_END"
+        ], 
+        [
+            "<val>", 
+            "ARG_PAIR_END"
+        ], 
+        [
+            "EXP", 
+            "ARG_PAIR_END"
+        ]
+    ], 
+    "BODY_COMMA": [
+        [
+            ",", 
+            "BODY"
+        ], 
+        [
+            "e"
         ]
     ], 
     "ARG_LIST": [
@@ -260,48 +289,6 @@
         [
             "EXP", 
             "ARG_LIST_END"
-        ]
-    ], 
-    "BODY_COMMA": [
-        [
-            ",", 
-            "BODY"
-        ], 
-        [
-            "e"
-        ]
-    ], 
-    "EXP_IN": [
-        [
-            "+", 
-            ":", 
-            "[", 
-            "ARG_LIST", 
-            "]"
-        ], 
-        [
-            "-", 
-            ":", 
-            "[", 
-            "ARG_PAIR", 
-            "]"
-        ], 
-        [
-            "*", 
-            ":", 
-            "[", 
-            "ARG_LIST", 
-            "]"
-        ], 
-        [
-            "/", 
-            ":", 
-            "[", 
-            "ARG_PAIR", 
-            "]"
-        ], 
-        [
-            "FUNCALL"
         ]
     ]
 }

@@ -1,5 +1,6 @@
 import json
 
+import constants
 from tokenizer import Tokenizer
 
 class SyntaxAnalyzer(object):
@@ -16,6 +17,12 @@ class SyntaxAnalyzer(object):
         grammar = open(grammar_file, 'r')
         self.grammar = json.loads(grammar.read())
         grammar.close()
+
+    def make_table(self):
+        self.table = {}
+        terminals = {key:None for key in constants.TERMINALS}
+        for production in self.grammar.keys():
+            self.table[production] = terminals
 
     def load_table(self, table_file):
         table = open(table_file, 'r')

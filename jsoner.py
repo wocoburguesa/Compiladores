@@ -1,9 +1,14 @@
 import json
+import sys
+
+"""
+Takes a .txt grammar file and saves it in JSON format
+"""
 
 if __name__ == '__main__':
-    txt = open('gramatica.txt', 'r')
+    txt = open(sys.argv[1], 'r')
     _json = {}
-    target = open('grammar.js', 'w')
+    target = open(sys.argv[2], 'w')
 
     for line in txt.readlines():
         line = [a.strip() for a in line.split('->')]
