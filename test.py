@@ -1,6 +1,7 @@
 from regex import RegEx
 from tokenizer import *
-from syntax import SyntaxAnalyzer
+from syntax import *
+from utils import *
 
 def test1():
     a = RegEx()
@@ -34,4 +35,13 @@ def test4():
     a = SyntaxAnalyzer('example2.js')
     a.load_grammar('grammar.js')
     a.make_table()
+    return a
+
+def test5():
+    CSVTableReader.dict_from_table('table.csv')
+
+def test6():
+    a = SyntaxAnalyzer('example2.js')
+    a.load_grammar('grammar.js')
+    a.load_table('table.csv')
     return a

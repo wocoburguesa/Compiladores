@@ -15,7 +15,9 @@ RESERVED_WORDS = [
 SYMBOLS = {
     '>': 'greater_than',
     '<': 'lesser_than',
-    '=': 'equals',
+    '==': 'equals',
+    '<=': 'lessereq',
+    '>=': 'greatereq',
     '{': 'open_curly',
     '}': 'close_curly',
     '[': 'open_bracket',
@@ -25,8 +27,7 @@ SYMBOLS = {
     '+': 'plus',
     '-': 'minus',
     '*': 'times',
-    '/': 'slash',
-    '#': 'numeral',
+    '/': 'slash'
     }
 
 VARIABLE = '<var>'
