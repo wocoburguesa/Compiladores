@@ -37,5 +37,12 @@ TERMINALS = RESERVED_WORDS + SYMBOLS.keys() + [VARIABLE, NUMBER]
 
 SYMBOL = 'symbol'
 INVALID = 'invalid'
-INVALID_MESSAGE = '"%(word)s" Is not a valid token'
+LEXICAL_ERROR = '"%(word)s" Is not a valid token'
 RESWORD = 'resword'
+
+#Syntax
+EMPTY_PRODUCTION = ['e']
+END_SYMBOL = '$'
+SYNTAX_ERROR = 'Expected %(expected)s, got "%(actual)s" instead'
+END_OF_FILE = 'end of file'
+POP_THRESHOLD = 2

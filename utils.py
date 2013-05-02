@@ -21,13 +21,9 @@ class CSVTableReader(object):
         counter = 0
         for row in raw_rows:
             counter = 0
-            print row
-            print row[1:]
             for element in row[1:]:
                 if element != '':
-                    print '!!!!!!', row[0], column_list[counter], element
                     table_dict[row[0]][column_list[counter]] = int(element)
                 counter += 1
-            print table_dict[row[0]]
 
         return table_dict

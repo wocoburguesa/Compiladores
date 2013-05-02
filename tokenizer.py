@@ -4,7 +4,7 @@ from custom_exceptions import InvalidToken
 from regex import *
 import constants
 
-class Error:
+class LexicalError:
     def __init__(self,
                  line,
                  error
@@ -24,6 +24,12 @@ class Token:
         self.token = token
         self.pos = pos
 
+    def get_terminal(self):
+        if self.token == constants.NUMBER:
+            return constants.NUMBER
+        else:
+            return self.lexeme
+
 class Symbol:
     def __init__(self,
                  line,
@@ -41,6 +47,9 @@ class Symbol:
         self.value = value
         self.context = context
         self.pos = pos
+
+    def get_terminal(self):
+        return self.token
 
 class Tokenizer:
     def __init__(self, filename):
@@ -85,9 +94,9 @@ class Tokenizer:
                 )
         elif word_type == constants.INVALID:
             self.errors.append(
-                Error(
+                LexicalError(
                     line=line_number,
-                    error=constants.INVALID_MESSAGE % {'word': buff},
+                    error=constants.LEXICAL_ERROR % {'word': buff},
                     )
                 )
 

@@ -41,7 +41,15 @@ def test5():
     CSVTableReader.dict_from_table('table.csv')
 
 def test6():
-    a = SyntaxAnalyzer('example2.js')
-    a.load_grammar('grammar.js')
+    a = SyntaxAnalyzer('example-correct.js')
+    a.set_grammar('grammar.js', 'SC')
     a.load_table('table.csv')
+    a.perform_analysis()
+    return a
+
+def test7():
+    a = SyntaxAnalyzer('example-incorrect.js')
+    a.set_grammar('grammar.js', 'SC')
+    a.load_table('table.csv')
+    a.perform_analysis()
     return a
