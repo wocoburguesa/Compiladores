@@ -9,7 +9,7 @@ if a , 2)
 
 }
 
-int main(){
+sjdkaint main(){
   int a;;;;;;
 
 

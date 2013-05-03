@@ -1,7 +1,7 @@
 {
     var1: 1,,
     var2: 2,
-    function sum: ,,,,
+    function sum: {,,,,
 	args: [op1, op2],
 	if: {
 	    {>: [op1, op2]},

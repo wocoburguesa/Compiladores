@@ -112,7 +112,7 @@ class SyntaxAnalyzer(object):
         sequence = self.token_sequence
         first_terminal = None
         production = None
-        pop_count = 0
+        curr_prod = None
 
         while stack and sequence:
             print 'STACK:', stack
@@ -120,13 +120,15 @@ class SyntaxAnalyzer(object):
             raw_input()
 
             first_terminal = sequence[0].get_terminal()
-            production = None
 
             #Ask if a new production needs to be pushed into the pile
             if stack[-1] in self.grammar_full.non_terminals:
                 #Ask if such a production exists on the table
                 if self.table[stack[-1]][first_terminal]:
                     production = list(self.table[stack.pop()][first_terminal])
+                    print production
+                    curr_prod = list(production)
+                    curr_prod.reverse()
                     #Ask if it isn't an empty production
                     if not production == constants.EMPTY_PRODUCTION:
                         while production:
@@ -134,26 +136,25 @@ class SyntaxAnalyzer(object):
 
                 else:
                     self.add_error(stack[-1], first_terminal, sequence[0].line)
-                    if pop_count < constants.POP_THRESHOLD:
-                        sequence.pop(0)
-                        pop_count += 1
-                    else:
-                        stack.pop()
-                        pop_count = 0
+                    sequence.pop(0)
+                    #error handling here
 
             elif stack[-1] == first_terminal:
                 stack.pop()
+                if curr_prod:
+                    curr_prod.pop()
                 sequence.pop(0) #sequence is NOT a stack, pops from the front
 
             else:
                 self.add_error(stack[-1], first_terminal, sequence[0].line)
-                print self.errors[-1]
-                if pop_count < constants.POP_THRESHOLD:
-                    sequence.pop(0)
-                    pop_count += 1
-                else:
+                while curr_prod:
+                    curr_prod.pop()
                     stack.pop()
-                    pop_count = 0
+
+                if len(stack) == 1 and len(sequence) > 1:
+                    stack.append(constants.WILDCARD_PROD)
+                #error handling here
+
 
     def add_error(self, expected, actual, line):
         if expected is '$':
@@ -167,7 +168,6 @@ class SyntaxAnalyzer(object):
                     }
                 )
             )
-        
 
     def print_all(self):
         self.tokenizer.print_all()

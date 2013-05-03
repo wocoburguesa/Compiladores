@@ -46,3 +46,4 @@ END_SYMBOL = '$'
 SYNTAX_ERROR = 'Expected %(expected)s, got "%(actual)s" instead'
 END_OF_FILE = 'end of file'
 POP_THRESHOLD = 2
+WILDCARD_PROD = 'BODY'
